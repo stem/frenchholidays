@@ -10,11 +10,6 @@
             "document-root": "public",
             "index-document": "index.php"
         },
-        "php-config": [
-            "display_errors=off",
-            "short_open_tag=off",
-            "date.timezone=Europe/Paris"
-        ],
         "newrelic": true
     }
 }

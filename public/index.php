@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set("Europe/Paris");
+
 function get_easter_datetime($year) {
     $base = new DateTime("$year-03-21");
     $days = easter_days($year);
