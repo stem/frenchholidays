@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/"
+
+./composer/bin/phploc ./app/ ./lib/ ./public/
+./composer/bin/phpcpd ./app/ ./lib/ ./public/
+
+./composer/bin/phpmd ./app/ text cleancode,codesize,controversial,design,naming,unusedcode
+./composer/bin/phpmd ./lib/ text cleancode,codesize,controversial,design,naming,unusedcode
+./composer/bin/phpmd ./public/ text cleancode,codesize,controversial,design,naming,unusedcode
+
+./composer/bin/phpcs --config-set default_standard PSR2
+./composer/bin/phpcs --report-width=$(tput cols) --report=full     ./app/ ./lib/

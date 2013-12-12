@@ -6,11 +6,6 @@
  */
 function get_french_holidays_dates($year)
 {
-    $easterDate  = easter_date($year);
-    $easterDay   = date('j', $easterDate);
-    $easterMonth = date('n', $easterDate);
-    $easterYear   = date('Y', $easterDate);
-
     $holidays = array(
         // Dates fixes
         (new DateTime("{$year}-01-01"))->format("Y-m-d"), // 1er janvier
@@ -23,9 +18,9 @@ function get_french_holidays_dates($year)
         (new DateTime("{$year}-12-25"))->format("Y-m-d"), // Noel
 
         // Dates variables
-        get_easter_datetime($year)->add(new DateInterval("P1D"))->format("Y-m-d"),  // Lundi de Pâques (1 jour apres Pâques)
-        get_easter_datetime($year)->add(new DateInterval("P39D"))->format("Y-m-d"), // Ascension (39 jours apres Pâques)
-        get_easter_datetime($year)->add(new DateInterval("P50D"))->format("Y-m-d"), // Lundi de Pentecôte (50 jours apres Pâques)
+        get_easter_datetime($year)->add(new DateInterval("P1D"))->format("Y-m-d"),  // Lundi de Pâques
+        get_easter_datetime($year)->add(new DateInterval("P39D"))->format("Y-m-d"), // Ascension
+        get_easter_datetime($year)->add(new DateInterval("P50D"))->format("Y-m-d"), // Lundi de Pentecôte
     );
 
     sort($holidays);

@@ -6,6 +6,18 @@
     "config": {
         "vendor-dir": "composer"
     },
+    "require-dev": {
+        "sebastian/phpcpd": "dev-master",
+        "squizlabs/php_codesniffer": "dev-master",
+        "phpmd/phpmd": "dev-master",
+        "phploc/phploc": "dev-master"
+    },
+    "autoload": {
+        "files": [
+            "lib/get_easter_datetime.php",
+            "lib/get_french_holidays_dates.php"
+        ]
+    },
     "extra": {
         "heroku": {
             "document-root": "public",
