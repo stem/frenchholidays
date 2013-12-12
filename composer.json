@@ -1,6 +1,7 @@
 {
     "require": {
-        "php": ">=5.5.0"
+        "php": ">=5.5.0",
+        "silex/silex": "1.x"
     },
     "config": {
         "vendor-dir": "composer"
