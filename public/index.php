@@ -50,7 +50,7 @@ function getHolidays($year = null)
 header("Content-Type: application/json");
 if (isset($_GET["check"])) {
     echo json_encode(in_array($_GET["check"], getHolidays(date("Y", strtotime($_GET["check"])))));
-elseif (isset($_GET["years"])) {
+} elseif (isset($_GET["years"])) {
     $holidays = [];
     sort($_GET["years"]);
     foreach ($_GET["years"] as $year) {
