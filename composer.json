@@ -1,7 +1,8 @@
 {
     "require": {
         "php": ">=5.5.0",
-        "silex/silex": "1.x"
+        "silex/silex": "1.x",
+        "jdesrosiers/silex-cors-provider": "~0.1"
     },
     "config": {
         "vendor-dir": "composer"
@@ -9,7 +10,7 @@
     "require-dev": {
         "sebastian/phpcpd": "dev-master",
         "squizlabs/php_codesniffer": "dev-master",
-        "phpmd/phpmd": "dev-master",
+        "phpmd/phpmd": "1.x",
         "phploc/phploc": "dev-master"
     },
     "autoload": {

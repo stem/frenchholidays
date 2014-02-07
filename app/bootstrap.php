@@ -66,4 +66,10 @@ $app->error(
     }
 );
 
+/**
+ * CORS Setup
+ */
+$app->register(new \JDesrosiers\Silex\Provider\CorsServiceProvider());
+$app->after($app["cors"]);
+
 return $app;
