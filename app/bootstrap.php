@@ -2,6 +2,7 @@
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 require "./composer/autoload.php";
 
@@ -52,6 +53,31 @@ $app->get(
         return $app->json($holidays);
     }
 )->assert("years", "([0-9]{4},)*[0-9]{4}");
+
+$app->get(
+    "/years/{years}",
+    function (Application $app, $years) {
+        $include = strstr($years, "...");
+        list($start, $end) = preg_split("/\.{2,3}/", $years, 2);
+
+        if ($start > $end) {
+            $app->abort(400, "{$end} MUST be greater than {$start}");
+        }
+
+        $years = [];
+
+        for ($year = $start; $year <= $end; $year++) {
+            if (!$include && $year == $end) {
+                break;
+            }
+            $years[] = $year;
+        }
+
+        $years = implode(",", $years);
+        $subRequest = Request::create("/years/{$years}");
+        return $app->handle($subRequest, HttpKernelInterface::SUB_REQUEST, false);
+    }
+)->assert("years", "[0-9]{4}\.{2,3}[0-9]{4}");
 
 /**
  * Error Handler magique :
