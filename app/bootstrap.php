@@ -60,8 +60,12 @@ $app->get(
         $include = strstr($years, "...");
         list($start, $end) = preg_split("/\.{2,3}/", $years, 2);
 
-        if ($start > $end) {
+        if ($start >= $end && !$include) {
             $app->abort(400, "{$end} MUST be greater than {$start}");
+        }
+
+        if ($start > $end && $include) {
+            $app->abort(400, "{$end} MUST be greater or equal than {$start}");
         }
 
         $years = [];
