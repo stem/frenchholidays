@@ -1,8 +1,8 @@
 {
     "require": {
         "php": ">=5.5.0",
-        "silex/silex": "1.x",
-        "jdesrosiers/silex-cors-provider": "~0.1"
+        "silex/silex": "2.x",
+        "jdesrosiers/silex-cors-provider": "1.x"
     },
     "config": {
         "vendor-dir": "composer"
